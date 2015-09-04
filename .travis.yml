@@ -1,0 +1,16 @@
+language: ruby
+
+addons:
+  apt:
+    packages:
+      - bzip2
+      - tar
+
+before_install:
+  - pip install --user ansible
+  - ls -larthh /bin
+  - echo 'localhost' > inventory
+  - echo '[defaults'] > ansible.cfg
+  - echo 'roles_path = ../' >> ansible.cfg
+  - export PATH=$PATH:$HOME/.local/bin
+  - ansible-playbook -i inventory --connection=local test/integration/default/default.yml

@@ -1,2 +1,41 @@
 ---
-# tasks file for bwa
+
+- name: install gcc (apt)
+  apt: name={{ item }} state=present
+  when: ansible_pkg_mgr == 'apt'
+  with_items:
+    - zlib1g-dev
+    - build-essential
+
+- name: install gcc (yum)
+  yum: name={{ item }} state=present
+  when: ansible_pkg_mgr == 'yum'
+  with_items:
+    - zlib-devel
+    - "\"@Development tools\""
+
+- name: create src directory
+  file: path={{ src_path }} state=directory
+
+- name: create bin directory
+  file: path={{ bin_path }} state=directory
+
+- name: download bwa
+  get_url:
+    url: "{{ bwa_download_prefix }}/{{ bwa_file_name }}"
+    dest: "{{src_path}}/{{ bwa_file_name }}"
+
+- name: uncompress bwa
+  unarchive:
+    src: "{{ src_path }}/{{ bwa_file_name }}"
+    dest: "{{ src_path }}"
+    copy: no
+
+- name: run make
+  command: "make chdir={{ src_path }}/{{ bwa_file_prefix }}"
+
+- name: copy to {{ bin_path }}/bwa
+  copy: src={{ src_path }}/{{ bwa_file_prefix }}/bwa dest={{ bin_path }}/bwa
+
+- name: set executable permissions
+  file: path={{ bin_path }}/bwa mode=755

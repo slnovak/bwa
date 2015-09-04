@@ -1,2 +1,8 @@
 ---
-# vars file for bwa
+
+bwa_download_prefix: http://sourceforge.net/projects/bio-bwa/files/
+
+# File prefix used in directory / file naming
+bwa_file_prefix: bwa-{{ bwa_version }}
+
+bwa_file_name: "{{ bwa_file_prefix }}.tar.bz2"

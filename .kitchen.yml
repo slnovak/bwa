@@ -1,0 +1,15 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: ansible_playbook
+  hosts: all
+
+platforms:
+  - name: centos-6.6
+    driver_plugin: vagrant
+    driver_config:
+      box: centos-6.6
+
+suites:
+    - name: default

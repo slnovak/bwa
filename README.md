@@ -1,38 +1,49 @@
+[![build-status](https://travis-ci.org/slnovak/bwa.png)](https://travis-ci.org/slnovak/bwa)
+
 Role Name
 =========
 
-A brief description of the role goes here.
+This Ansible role installs the [Burrows-Wheeler Aligner](http://bio-bwa.sourceforge.net/).
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires GCC and will install it if it's not installed already.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Defaults ###
 
-Dependencies
-------------
++ `bwa_version` (default: `0.7.12`): Version of BWA to install.
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
++ `src_path` (default: `/usr/local/src`): Location where the BWA source code
+  will be downloaded.
+
++ `bin_path` (default: `/usr/local/bin`): Location where the BWA executable will
+  be installed.
+
+### Variables ###
+
++ `bwa_download_prefix`: URL prefix used for downloading BWA.
+
++ `bwa_file_prefix`: Filename prefix used in downloading and extracting BWA.
+
++ `bwa_file_name`: Filename of archive to be downloaded.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+To install BWA on a host, include the bwa role within a playbook:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: compute_nodes
+  roles:
+     - role: bwa
+       bwa_version: 0.7.12
+```
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).

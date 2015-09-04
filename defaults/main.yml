@@ -1,2 +1,9 @@
 ---
-# defaults file for bwa
+
+bwa_version: 0.7.12
+
+# Where source code is extracted
+src_path: /usr/local/src
+
+# Directory where the executable is copied to
+bin_path: /usr/local/bin

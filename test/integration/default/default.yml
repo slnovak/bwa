@@ -1,0 +1,8 @@
+---
+
+- hosts: localhost
+  roles:
+    - bwa
+  vars:
+    bin_path: "{{ ansible_env.HOME }}/bin"
+    src_path: "{{ ansible_env.HOME }}/src"
