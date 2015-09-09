@@ -2,7 +2,22 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    highline (1.7.3)
+    kitchen (0.0.3)
+    kitchen-ansible (0.0.25)
+      librarian-ansible
+      test-kitchen
+    librarian (0.1.2)
+      highline
+      thor (~> 0.15)
+    librarian-ansible (1.0.6)
+      faraday
+      librarian (~> 0.1.0)
+    mixlib-shellout (2.2.0)
     multi_json (1.11.2)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
@@ -24,6 +39,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    safe_yaml (1.0.4)
     serverspec (2.23.0)
       multi_json
       rspec (~> 3.0)
@@ -35,11 +51,20 @@ GEM
       net-ssh (~> 2.7)
       net-telnet
       sfl
+    test-kitchen (1.4.2)
+      mixlib-shellout (>= 1.2, < 3.0)
+      net-scp (~> 1.1)
+      net-ssh (~> 2.7, < 2.10)
+      safe_yaml (~> 1.0)
+      thor (~> 0.18)
+    thor (0.19.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  kitchen (~> 0.0.3)
+  kitchen-ansible (~> 0.0.25)
   rake (~> 10.4.2)
   serverspec (~> 2.23.0)
 
