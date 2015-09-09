@@ -1,7 +1,7 @@
 [![build-status](https://travis-ci.org/slnovak/bwa.png)](https://travis-ci.org/slnovak/bwa)
 
-Role Name
-=========
+BWA Role
+========
 
 This Ansible role installs the [Burrows-Wheeler Aligner](http://bio-bwa.sourceforge.net/).
 
